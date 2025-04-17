@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURSED Fragrance Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        accent: '#ff3d71',
+                        dark: '#0a0a0a',
+                        'dark-purple': '#1d1a2f',
+                        'dark-red': '#2f1a1a',
+                        'dark-blue': '#1a1a2f',
+                        glass: 'rgba(255, 255, 255, 0.08)',
+                        'glass-dark': 'rgba(15, 15, 24, 0.6)',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'ui-serif', 'Georgia'],
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-symbol': 'float-symbol 8s infinite linear',
+                        'pulse-mystical': 'pulse-mystical 5s infinite alternate',
+                        'fadeIn': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(93, 92, 222, 0.3), 0 0 10px rgba(93, 92, 222, 0.2)' },
+                            '100%': { boxShadow: '0 0 10px rgba(93, 92, 222, 0.5), 0 0 20px rgba(93, 92, 222, 0.4), 0 0 30px rgba(93, 92, 222, 0.2)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        'float-symbol': {
+                            '0%': { transform: 'translateY(0) rotate(0)', opacity: 0.4 },
+                            '50%': { transform: 'translateY(-10px) rotate(180deg)', opacity: 0.7 },
+                            '100%': { transform: 'translateY(0) rotate(360deg)', opacity: 0.4 }
+                        },
+                        'pulse-mystical': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: 0.8 },
+                            '50%': { transform: 'scale(1.1)', opacity: 1 }
+                        },
+                        'fadeIn': {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(93, 92, 222, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 61, 113, 0.05) 0%, transparent 30%);
+            min-height: 100vh;
+        }
+
+        .glass {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(15, 15, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        
+        .glass-red {
+            background: rgba(30, 10, 10, 0.7);
+        }
+        
+        .glass-blue {
+            background: rgba(10, 10, 30, 0.7);
+        }
+        
+        .glass-purple {
+            background: rgba(20, 10, 30, 0.7);
+        }
+        
+        .featured-glass {
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(20, 5, 5, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+        
+        .glow-border {
+            position: relative;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: inherit;
+            background: linear-gradient(45deg, #5D5CDE, transparent, #ff3d71, transparent);
+            z-index: -1;
+            animation: animate-border 8s linear infinite;
+            opacity: 0.5;
+        }
+        
+        .glow-border-red::before {
+            background: linear-gradient(45deg, #ff3d71, transparent, #ff3d71, transparent);
+        }
+        
+        .glow-border-blue::before {
+            background: linear-gradient(45deg, #5D5CDE, transparent, #5D5CDE, transparent);
+        }
+        
+        .glow-border-purple::before {
+            background: linear-gradient(45deg, #9D5CDE, transparent, #9D5CDE, transparent);
+        }
+        
+        @keyframes animate-border {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .rating-circle {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            margin-right: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .rating-circle.filled {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 1);
+        }
+        
+        .rating-circle.half-filled {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.2) 50%);
+        }
+        
+        .product-image {
+            transition: all 0.5s ease;
+            transform-origin: center;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.03);
+        }
+        
+        .product-card:hover .glow-border::before {
+            opacity: 0.8;
+        }
+        
+        .mystical-aura {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .product-card:hover .mystical-aura {
+            opacity: 0.15;
+            animation: pulse-mystical 3s infinite alternate;
+        }
+        
+        .mystical-aura.red {
+            background: radial-gradient(circle at center, rgba(255, 0, 0, 0.5) 0%, transparent 70%);
+        }
+        
+        .mystical-aura.blue {
+            background: radial-gradient(circle at center, rgba(0, 0, 255, 0.5) 0%, transparent 70%);
+        }
+        
+        .mystical-aura.purple {
+            background: radial-gradient(circle at center, rgba(128, 0, 128, 0.5) 0%, transparent 70%);
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+        
+        .shine-text {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 50;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            margin: auto;
+            width: 90%;
+            max-width: 600px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .nav-arrow.left {
+            left: 10px;
+        }
+        
+        .nav-arrow.right {
+            right: 10px;
+        }
+        
+        .review-highlight {
+            background: linear-gradient(90deg, #ff3d71, #5D5CDE);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Header -->
+    <header class="p-6 md:p-8 glass rounded-b-2xl">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-purple-500 to-blue-500">CURSED</h1>
+            <p class="text-lg md:text-xl text-gray-300 font-light">Luxury Fragrance Collection</p>
+        </div>
+    </header>
+    
+    <!-- Disclaimer -->
+    <div class="max-w-6xl mx-auto px-4 py-4">
+        <div class="glass rounded-xl p-4 mb-8 border border-gray-800 animate-pulse-slow">
+            <p class="text-gray-300 text-sm text-center">
+                <span class="font-medium text-white">DISCLAIMER:</span> We are not "cursed" nor affiliated with them - but merely taking the most incredible review of a customer and giving it the display it deserves. <span class="text-red-400 font-medium">ALL CONTENT FROM AN ACTUAL paying loyal customer</span> - all credit to them - we're just the messenger.
+            </p>
+        </div>
+    </div>
+
+    <!-- Featured Fragrance with Navigation Arrows -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 py-8">
+        <div class="featured-glass rounded-3xl p-6 md:p-10 relative glow-border glow-border-red overflow-hidden animate-pulse-slow mb-16">
+            <div class="absolute top-[-10px] right-[-10px] bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold transform rotate-3 z-10">THE ONE</div>
+            
+            <!-- Navigation Arrows -->
+            <div class="nav-arrow left" onclick="navigateFeature('prev')">
+                <i class="fas fa-chevron-left text-white"></i>
+            </div>
+            <div class="nav-arrow right" onclick="navigateFeature('next')">
+                <i class="fas fa-chevron-right text-white"></i>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="relative overflow-hidden rounded-2xl">
+                    <div class="mystical-aura red"></div>
+                    <img src="https://pfst.cf2.poecdn.net/base/image/ce7c61bed922b0635c087607e0331149ef7aa823733ca45d98be292700c9d05a?w=644&h=1396" alt="From Hell Fragrance" class="w-full h-auto product-image rounded-2xl">
+                </div>
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4">FROM HELL</h2>
+                    <p class="text-xl md:text-2xl text-red-400 mb-6 font-medium shine-text">Unleash the darkness within</p>
+                    
+                    <div class="space-y-6">
+                        <p class="text-lg text-gray-200 leading-relaxed">
+                            The dominating aura of Lucifer himself. A potent draught, with the malevolent ability to force any being to commit sin.
+                        </p>
+                        
+                        <div>
+                            <p class="text-xl italic text-gray-300 mb-6">Styrax Incense, Patchouli & Ambroxan</p>
+                            
+                            <div class="flex items-center space-x-4 mb-3">
+                                <span class="text-gray-300 uppercase tracking-wider text-sm w-24">INTENSITY</span>
+                                <div class="flex">
+                                    <span class="rating-circle filled"></span>
+                                    <span class="rating-circle filled"></span>
+                                    <span class="rating-circle filled"></span>
+                                    <span class="rating-circle filled"></span>
+                                    <span class="rating-circle filled"></span>
+                                </div>
+                                <span class="text-gray-300 italic">Cursed</span>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4 mb-6">
+                                <span class="text-gray-300 uppercase tracking-wider text-sm w-24">PERSONA</span>
+                                <div class="flex">
+                                    <span class="rating-circle filled"></span>
+                                    <span class="rating-circle half-filled"></span>
+                                    <span class="rating-circle"></span>
+                                    <span class="rating-circle"></span>
+                                    <span class="rating-circle"></span>
+                                </div>
+                                <span class="text-gray-300 italic">Very Devil</span>
+                            </div>
+                            
+                            <div class="text-2xl font-bold text-white">£5.00 – £79.00</div>
+                        </div>
+                        
+                        <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                            <button class="glow-border glow-border-red bg-gradient-to-r from-red-800 to-red-900 hover:from-red-700 hover:to-red-800 text-white py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105 animate-glow">
+                                Embrace Damnation
+                            </button>
+                            <button onclick="openReviewModal('from-hell-review')" class="glow-border bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-full font-medium transition-all duration-300">
+                                Read Customer Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-center">The Collection</h2>
+        
+        <!-- Fragrance Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+            <!-- Death's Elixir -->
+            <div class="glass glass-blue rounded-2xl p-6 md:p-8 h-full transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative glow-border glow-border-blue overflow-hidden product-card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <div class="mystical-aura blue"></div>
+                        <img src="https://pfst.cf2.poecdn.net/base/image/c3d35966fe170e76a4b4844b8f578273f7db219023d1462a8df85024c2c1a702?w=718&h=1422" alt="Death's Elixir Fragrance" class="w-full h-auto product-image rounded-xl">
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-serif font-bold mb-3">DEATH'S ELIXIR</h3>
+                        <p class="text-gray-200 mb-4 leading-relaxed">
+                            A complex elixir crafted by Death. Those who wield it realise their deepest desires, yet bind their soul with an eternal debt.
+                        </p>
+                        
+                        <p class="text-lg italic text-gray-300 mb-4">Black Leather, Oakmoss & Vetiver</p>
+                        
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">INTENSITY</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle half-filled"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Intense</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">PERSONA</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle half-filled"></span>
+                                <span class="rating-circle"></span>
+                                <span class="rating-circle"></span>
+                                <span class="rating-circle"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Very Devil</span>
+                        </div>
+                        
+                        <div class="text-xl font-bold text-white mb-4">£5.00 – £77.00</div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="w-full sm:w-auto border border-blue-500 text-blue-400 hover:bg-blue-900 hover:bg-opacity-30 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Explore Fragrance
+                            </button>
+                            <button onclick="openReviewModal('deaths-elixir-review')" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Read Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vampiren Veil -->
+            <div class="glass glass-red rounded-2xl p-6 md:p-8 h-full transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,60,115,0.3)] relative glow-border glow-border-red overflow-hidden product-card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <div class="mystical-aura red"></div>
+                        <img src="https://pfst.cf2.poecdn.net/base/image/687e4601d457806668a75b2dffd803736bdbe7e367ac011a136c34b7ebeb8799?w=666&h=1434" alt="Vampiren Veil Fragrance" class="w-full h-auto product-image rounded-xl">
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-serif font-bold mb-3">VAMPIREN VEIL</h3>
+                        <p class="text-gray-200 mb-4 leading-relaxed">
+                            The Vampire's seductive scent from the depths of Transylvania, laced with a fatal power of attraction.
+                        </p>
+                        
+                        <p class="text-lg italic text-gray-300 mb-4">Burnt Sugar, Fir Resin & Black Amber</p>
+                        
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">INTENSITY</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle half-filled"></span>
+                                <span class="rating-circle"></span>
+                                <span class="rating-circle"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Mystical</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">PERSONA</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle half-filled"></span>
+                                <span class="rating-circle"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Unisex</span>
+                        </div>
+                        
+                        <div class="text-xl font-bold text-white mb-4">£5.00 – £79.00</div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="w-full sm:w-auto border border-red-500 text-red-400 hover:bg-red-900 hover:bg-opacity-30 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Explore Fragrance
+                            </button>
+                            <button onclick="openReviewModal('vampiren-veil-review')" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Read Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Moonstruck -->
+            <div class="glass glass-blue rounded-2xl p-6 md:p-8 h-full transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative glow-border glow-border-blue overflow-hidden product-card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <div class="mystical-aura blue"></div>
+                        <img src="https://pfst.cf2.poecdn.net/base/image/76f80ac13f3dea5447c53dbc47520d70e96f6f51ac9d480ed88322be3fb83baa?w=662&h=1438" alt="Moonstruck Fragrance" class="w-full h-auto product-image rounded-xl">
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-serif font-bold mb-3">MOONSTRUCK</h3>
+                        <p class="text-gray-200 mb-4 leading-relaxed">
+                            A luminous, floral potion, both bewitching & lethal. Nurtured by nocturnal magic & the mystical power of moonlight.
+                        </p>
+                        
+                        <p class="text-lg italic text-gray-300 mb-4">Jasmine, Liquorice & Black Coffee</p>
+                        
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">INTENSITY</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle half-filled"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Intense</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">PERSONA</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Very De'ville</span>
+                        </div>
+                        
+                        <div class="text-xl font-bold text-white mb-4">£5.00 – £78.00</div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="w-full sm:w-auto border border-blue-500 text-blue-400 hover:bg-blue-900 hover:bg-opacity-30 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Explore Fragrance
+                            </button>
+                            <button onclick="openReviewModal('moonstruck-review')" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Read Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Crystal Ritual -->
+            <div class="glass glass-purple rounded-2xl p-6 md:p-8 h-full transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(148,92,222,0.3)] relative glow-border glow-border-purple overflow-hidden product-card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <div class="mystical-aura purple"></div>
+                        <img src="https://pfst.cf2.poecdn.net/base/image/4784e58d60b7f6d8e4523d0f65431a273f16fd084cf6cb90828d414aae80799f?w=650&h=1396" alt="Crystal Ritual Fragrance" class="w-full h-auto product-image rounded-xl">
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-serif font-bold mb-3">CRYSTAL RITUAL</h3>
+                        <p class="text-gray-200 mb-4 leading-relaxed">
+                            A haunting elixir of resurrection, conjured by a widow's grieving heart & the peculiar, tempting glow of a mysterious crystal.
+                        </p>
+                        
+                        <p class="text-lg italic text-gray-300 mb-4">Frosted Jasmine, Velvet Rose & Sweet Amber</p>
+                        
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">INTENSITY</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle half-filled"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Intense</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="text-gray-300 uppercase tracking-wider text-xs w-20">PERSONA</span>
+                            <div class="flex">
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                                <span class="rating-circle filled"></span>
+                            </div>
+                            <span class="text-gray-300 italic text-sm">Very De'ville</span>
+                        </div>
+                        
+                        <div class="text-xl font-bold text-white mb-4">£5.00 – £76.00</div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="w-full sm:w-auto border border-purple-500 text-purple-400 hover:bg-purple-900 hover:bg-opacity-30 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Explore Fragrance
+                            </button>
+                            <button onclick="openReviewModal('crystal-ritual-review')" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">
+                                Read Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Customer Experience Section -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 py-12 mb-16">
+        <div class="glass rounded-3xl p-6 md:p-10">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 text-center">Embrace Your Darkness</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                <div class="glass p-6 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-red-900 to-purple-900 flex items-center justify-center">
+                        <i class="fas fa-ghost text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Haunting Presence</h3>
+                    <p class="text-gray-400 text-sm">Linger in memory long after you've departed, leaving an ethereal trail of mystery</p>
+                </div>
+                
+                <div class="glass p-6 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-900 to-blue-900 flex items-center justify-center">
+                        <i class="fas fa-moon text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Nocturnal Evolution</h3>
+                    <p class="text-gray-400 text-sm">Experience how each fragrance transforms throughout the night, revealing hidden depths</p>
+                </div>
+                
+                <div class="glass p-6 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-900 to-red-900 flex items-center justify-center">
+                        <i class="fas fa-skull text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Deadly Allure</h3>
+                    <p class="text-gray-400 text-sm">Command attention with scents designed to captivate, entrance, and bewitch</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="glow-border bg-gradient-to-r from-red-900 via-purple-900 to-blue-900 text-white py-3 px-10 rounded-full font-medium transition-all duration-300 transform hover:scale-105 animate-glow">
+                    Surrender Your Soul
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="glass rounded-t-2xl p-6 md:p-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-2xl font-serif font-bold mb-4">CURSED</h2>
+            <p class="text-gray-400 mb-6">Luxury Fragrance Collection</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-pinterest text-xl"></i>
+                </a>
+            </div>
+            <div class="opacity-50 mb-2">
+                <span class="text-xs">ELIXIRS OF THE CURSED © MMXXIII</span>
+            </div>
+            <p class="text-sm text-gray-500">Disclaimer: This showcase is based on customer reviews only. We are not affiliated with CURSED.</p>
+        </div>
+    </footer>
+    
+    <!-- Review Modals -->
+    <div id="from-hell-review" class="modal">
+        <div class="modal-content glass p-8 rounded-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl font-serif font-bold">FROM HELL - Customer Review</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="mb-4 p-4 rounded-xl bg-gradient-to-r from-red-900/30 to-transparent">
+                    <p class="text-xl font-medium mb-2">Notes as described:</p>
+                    <p><span class="font-medium">Top:</span> Sandalwood</p>
+                    <p><span class="font-medium">Heart:</span> Black Styrax, Benzoin Siam, Patchouli Leaf</p>
+                    <p><span class="font-medium">Base:</span> Ambroxan Resin, Black Amber</p>
+                </div>
+                
+                <div class="space-y-3">
+                    <p><span class="font-medium text-white">Immediate:</span> Sandalwood and patchouli - your hippy aunt's bedroom.</p>
+                    <p><span class="font-medium text-white">2-10 minutes:</span> Becomes subtler, more complex. Warm, dry, spicy.</p>
+                    <p><span class="font-medium text-white">1 hour:</span> Somehow the patchouli is staying balanced on me in this blend. We're now into autumnal woods territory.</p>
+                    <p><span class="font-medium text-white">4+ hours:</span> Rich, soothing warm woods.</p>
+                    <p><span class="font-medium text-white">Wear:</span> Exceptional.</p>
+                    <p class="review-highlight text-lg mt-4">THIS IS THE ONE. Full size ordered.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="deaths-elixir-review" class="modal">
+        <div class="modal-content glass p-8 rounded-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl font-serif font-bold">DEATH'S ELIXIR - Customer Review</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="mb-4 p-4 rounded-xl bg-gradient-to-r from-blue-900/30 to-transparent">
+                    <p class="text-xl font-medium mb-2">Notes as described:</p>
+                    <p><span class="font-medium">Top:</span> Green Cardamom, Sargal Saffron, Sceptre Raspberry</p>
+                    <p><span class="font-medium">Heart:</span> Black Leather, Jasmine Flowers, Sweet Amber</p>
+                    <p><span class="font-medium">Base:</span> Oakmoss, Patchouli Leaf, Vetiver</p>
+                </div>
+                
+                <div class="space-y-3">
+                    <p><span class="font-medium text-white">Immediate:</span> Raspberry!</p>
+                    <p><span class="font-medium text-white">2-10 minutes:</span> Damp, woody, herbaceous with the raspberry a subtle touch over it. Like picking wild raspberries in a forest grove.</p>
+                    <p><span class="font-medium text-white">1 hour:</span> Complex deep autumnal scent - woods and damp rich mossy earth. Patchouli pretty prominent on me, which is common for my body chemistry.</p>
+                    <p><span class="font-medium text-white">4+ hours:</span> Gently sweetened and freshened patchouli with a faint hint of spice.</p>
+                    <p><span class="font-medium text-white">Wear:</span> Good! Several hours. Sits close to the body, which I prefer.</p>
+                    <p class="text-lg mt-4">I like it, but the patchouli overwhelms it on me.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="vampiren-veil-review" class="modal">
+        <div class="modal-content glass p-8 rounded-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl font-serif font-bold">VAMPIREN VEIL - Customer Review</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="mb-4 p-4 rounded-xl bg-gradient-to-r from-red-900/30 to-transparent">
+                    <p class="text-xl font-medium mb-2">Notes as described:</p>
+                    <p><span class="font-medium">Top:</span> Sargol Saffron, Jasmine Flowers, Crimson Strawberry</p>
+                    <p><span class="font-medium">Heart:</span> Burnt Sugar, Fir Tree Resin, Ambrox Crystals</p>
+                    <p><span class="font-medium">Base:</span> Black Amber</p>
+                </div>
+                
+                <div class="space-y-3">
+                    <p><span class="font-medium text-white">Immediate:</span> Rum</p>
+                    <p><span class="font-medium text-white">2-10 minutes:</span> Strawberry creme brulee with an edge</p>
+                    <p><span class="font-medium text-white">1 hour:</span> Sweet but not super sugary sweet - a more complex and refined sweetness.</p>
+                    <p><span class="font-medium text-white">4+ hours:</span> Warm skin, powdery spice, and a hint of fresh farm strawberries in the height of summer.</p>
+                    <p><span class="font-medium text-white">Wear:</span> Good. Very subtle after about 4 hours.</p>
+                    <p class="text-lg mt-4 review-highlight">I like this much more than Crystal Ritual - this is far more how I like my sweet/fruit fragrances. Not as feminine, more deep notes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="moonstruck-review" class="modal">
+        <div class="modal-content glass p-8 rounded-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl font-serif font-bold">MOONSTRUCK - Customer Review</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="mb-4 p-4 rounded-xl bg-gradient-to-r from-blue-900/30 to-transparent">
+                    <p class="text-xl font-medium mb-2">Notes as described:</p>
+                    <p><span class="font-medium">Top:</span> Black Coffee, Frosted Jasmine, Sweet Licorice</p>
+                    <p><span class="font-medium">Heart:</span> Pink Pepper, Vanilla Absolute</p>
+                    <p><span class="font-medium">Base:</span> Patchouli Leaf, Ambroxen</p>
+                </div>
+                
+                <div class="space-y-3">
+                    <p><span class="font-medium text-white">Immediate:</span> Sharp powder?</p>
+                    <p><span class="font-medium text-white">2-10 minutes:</span> Powdery, very faint whiff of aniseed</p>
+                    <p><span class="font-medium text-white">1 hour:</span> Generically 'soft' smelling</p>
+                    <p><span class="font-medium text-white">4+ hours:</span> Vintage high femme body powder</p>
+                    <p><span class="font-medium text-white">Wear:</span> Poor</p>
+                    <p class="text-lg mt-4">Did not like this at all - shame.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="crystal-ritual-review" class="modal">
+        <div class="modal-content glass p-8 rounded-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl font-serif font-bold">CRYSTAL RITUAL - Customer Review</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="mb-4 p-4 rounded-xl bg-gradient-to-r from-purple-900/30 to-transparent">
+                    <p class="text-xl font-medium mb-2">Notes as described:</p>
+                    <p><span class="font-medium">Top:</span> Frosted Jasmine, Crimson Strawberry, Midnight Velvet Rose</p>
+                    <p><span class="font-medium">Heart:</span> Precious Woods, Styrax Incense</p>
+                    <p><span class="font-medium">Base:</span> Palo Santo Smoke, Sweet Amber</p>
+                </div>
+                
+                <div class="space-y-3">
+                    <p><span class="font-medium text-white">Immediate:</span> Cool mineral</p>
+                    <p><span class="font-medium text-white">2-10 minutes:</span> Strong rose and sweet strawberry, almost strawberry juice smell. Faint cool mineral background</p>
+                    <p><span class="font-medium text-white">1 hour:</span> Still sweet in a slightly juicy way, smells less like strawberry juice, more fresh. Mineral smell still present. Overall a very 'cool' fragrance, fittingly for the name.</p>
+                    <p><span class="font-medium text-white">4+ hours:</span> Mostly light woods and subtle spice with a cold sweetness over the top.</p>
+                    <p><span class="font-medium text-white">Wear:</span> Wears well for several hours on my skin.</p>
+                    <p class="text-lg mt-4">I like it and will use up the sample, but it's not really my sort of thing, not even for a summer scent.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        // Featured product navigation
+        let featuredProducts = [
+            {
+                name: "FROM HELL",
+                image: "https://pfst.cf2.poecdn.net/base/image/ce7c61bed922b0635c087607e0331149ef7aa823733ca45d98be292700c9d05a?w=644&h=1396",
+                reviewId: "from-hell-review"
+            },
+            {
+                name: "DEATH'S ELIXIR",
+                image: "https://pfst.cf2.poecdn.net/base/image/c3d35966fe170e76a4b4844b8f578273f7db219023d1462a8df85024c2c1a702?w=718&h=1422",
+                reviewId: "deaths-elixir-review"
+            },
+            {
+                name: "VAMPIREN VEIL",
+                image: "https://pfst.cf2.poecdn.net/base/image/687e4601d457806668a75b2dffd803736bdbe7e367ac011a136c34b7ebeb8799?w=666&h=1434",
+                reviewId: "vampiren-veil-review"
+            },
+            {
+                name: "MOONSTRUCK",
+                image: "https://pfst.cf2.poecdn.net/base/image/76f80ac13f3dea5447c53dbc47520d70e96f6f51ac9d480ed88322be3fb83baa?w=662&h=1438",
+                reviewId: "moonstruck-review"
+            },
+            {
+                name: "CRYSTAL RITUAL",
+                image: "https://pfst.cf2.poecdn.net/base/image/4784e58d60b7f6d8e4523d0f65431a273f16fd084cf6cb90828d414aae80799f?w=650&h=1396",
+                reviewId: "crystal-ritual-review"
+            }
+        ];
+        
+        let currentIndex = 0;
+        
+        function navigateFeature(direction) {
+            if (direction === 'next') {
+                currentIndex = (currentIndex + 1) % featuredProducts.length;
+            } else {
+                currentIndex = (currentIndex - 1 + featuredProducts.length) % featuredProducts.length;
+            }
+            
+            // Update the featured product image and name
+            const currentProduct = featuredProducts[currentIndex];
+            document.querySelector('.featured-glass .product-image').src = currentProduct.image;
+            document.querySelector('.featured-glass h2').textContent = currentProduct.name;
+            
+            // Update the "Read Customer Review" button to open the correct modal
+            const readReviewBtn = document.querySelector('.featured-glass button:last-child');
+            readReviewBtn.setAttribute('onclick', `openReviewModal('${currentProduct.reviewId}')`);
+        }
+        
+        // Modal functionality
+        function openReviewModal(modalId) {
+            closeModals(); // Close any open modals first
+            
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            
+            // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModals() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                closeModals();
+            }
+        });
+        
+        // Initialize interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to product cards
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add pulse effect to the mystical auras
+            const mysticalAuras = document.querySelectorAll('.mystical-aura');
+            mysticalAuras.forEach(aura => {
+                aura.style.animation = 'pulse-mystical 3s infinite alternate';
+            });
+        });
+    </script>
+</body>
+</html>
