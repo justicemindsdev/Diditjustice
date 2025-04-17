@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Fragrance Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        accent: '#ff3d71',
+                        dark: '#0f0f18',
+                        glass: 'rgba(255, 255, 255, 0.1)',
+                        'glass-dark': 'rgba(15, 15, 24, 0.6)',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+                        'serif': ['Playfair Display', 'ui-serif', 'Georgia'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(93, 92, 222, 0.3), 0 0 10px rgba(93, 92, 222, 0.2)' },
+                            '100%': { boxShadow: '0 0 10px rgba(93, 92, 222, 0.5), 0 0 20px rgba(93, 92, 222, 0.4), 0 0 30px rgba(93, 92, 222, 0.2)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #0f0f18;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(93, 92, 222, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 61, 113, 0.1) 0%, transparent 30%);
+            min-height: 100vh;
+        }
+
+        .glass {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        
+        .featured-glass {
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        
+        .glow-border {
+            position: relative;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: inherit;
+            background: linear-gradient(45deg, #5D5CDE, transparent, #5D5CDE, transparent);
+            z-index: -1;
+            animation: animate-border 4s linear infinite;
+        }
+        
+        @keyframes animate-border {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .fragrance-notes li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .fragrance-notes li::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: #5D5CDE;
+        }
+        
+        .bottle-image {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(circle at center, rgba(93, 92, 222, 0.15), transparent 70%);
+        }
+        
+        .bottle-image::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 300px;
+            background: linear-gradient(to bottom, rgba(93, 92, 222, 0.2), rgba(255, 255, 255, 0.1));
+            border-radius: 60px 60px 30px 30px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px rgba(93, 92, 222, 0.4);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bottle-image::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px 20px 0 0;
+            top: calc(50% - 150px);
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff3d71;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(255, 61, 113, 0.3);
+            transform: rotate(5deg);
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+        
+        .shine-text {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Header -->
+    <header class="p-6 md:p-8 glass rounded-b-2xl">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-primary to-pink-400">Luxury Fragrance Collection</h1>
+            <p class="text-lg md:text-xl text-gray-300 font-light">Exquisite scents for distinguished tastes</p>
+        </div>
+    </header>
+
+    <!-- Featured Fragrance -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+        <div class="featured-glass rounded-3xl p-6 md:p-10 relative glow-border overflow-hidden animate-pulse-slow mb-16">
+            <div class="featured-badge">THE ONE</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bottle-image"></div>
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">From Hell</h2>
+                    <p class="text-xl md:text-2xl text-primary mb-6 font-medium shine-text">Unleash the darkness within</p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-300 mb-2">Fragrance Notes</h3>
+                            <ul class="fragrance-notes text-gray-300 space-y-1">
+                                <li><span class="font-medium text-white">Top:</span> Sandalwood</li>
+                                <li><span class="font-medium text-white">Heart:</span> Black Styrax, Benzoin Siam, Patchouli Leaf</li>
+                                <li><span class="font-medium text-white">Base:</span> Ambroxan Resin, Black Amber</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-300 mb-2">Experience</h3>
+                            <div class="space-y-3 text-gray-300">
+                                <p><span class="font-medium text-white">Immediate:</span> Sandalwood and patchouli - your hippy aunt's bedroom.</p>
+                                <p><span class="font-medium text-white">2-10 minutes:</span> Becomes subtler, more complex. Warm, dry, spicy.</p>
+                                <p><span class="font-medium text-white">1 hour:</span> Balanced patchouli, autumnal woods territory.</p>
+                                <p><span class="font-medium text-white">4+ hours:</span> Rich, soothing warm woods.</p>
+                                <p><span class="font-medium text-white">Wear:</span> Exceptional.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <button class="glow-border bg-primary hover:bg-opacity-90 text-white py-3 px-8 rounded-full font-medium transition-all duration-300 transform hover:scale-105 animate-glow">
+                                Explore From Hell
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-center">Full Collection</h2>
+        
+        <!-- Fragrance Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Crystal Ritual -->
+            <div class="glass rounded-2xl p-6 h-full transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative">
+                <h3 class="text-2xl font-serif font-bold mb-2">Crystal Ritual</h3>
+                <p class="text-gray-400 mb-4 text-sm">A cool, mineral fragrance with sweet fruity top notes</p>
+                
+                <div class="space-y-4">
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Top Notes</h4>
+                        <p class="text-gray-300 text-sm">Frosted jasmine, crimson strawberry, midnight velvet rose</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Heart Notes</h4>
+                        <p class="text-gray-300 text-sm">Precious woods, styrax incense</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Base Notes</h4>
+                        <p class="text-gray-300 text-sm">Palo santo smoke, sweet amber</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                        View Details
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Kill For Me -->
+            <div class="glass rounded-2xl p-6 h-full transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative">
+                <h3 class="text-2xl font-serif font-bold mb-2">Kill For Me</h3>
+                <p class="text-gray-400 mb-4 text-sm">A classic men's cologne style with warm woody notes</p>
+                
+                <div class="space-y-4">
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Top Notes</h4>
+                        <p class="text-gray-300 text-sm">Agarwood oud, Green cardamom, Sichuan Pepper</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Heart Notes</h4>
+                        <p class="text-gray-300 text-sm">Sandalwood, Vanilla absolute, vetiver</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Base Notes</h4>
+                        <p class="text-gray-300 text-sm">Dalbergia rosewood, roasted tonka bean, black amber</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                        View Details
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Deaths Elixir -->
+            <div class="glass rounded-2xl p-6 h-full transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative">
+                <h3 class="text-2xl font-serif font-bold mb-2">Death's Elixir</h3>
+                <p class="text-gray-400 mb-4 text-sm">Complex autumnal scent with wild raspberry and forest notes</p>
+                
+                <div class="space-y-4">
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Top Notes</h4>
+                        <p class="text-gray-300 text-sm">Green Cardamom, Sargal Saffron, Sceptre Raspberry</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Heart Notes</h4>
+                        <p class="text-gray-300 text-sm">Black Leather, Jasmine Flowers, Sweet Amber</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Base Notes</h4>
+                        <p class="text-gray-300 text-sm">Oakmoss, Patchouli Leaf, Vetiver</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                        View Details
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Vampiren Veil -->
+            <div class="glass rounded-2xl p-6 h-full transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative">
+                <h3 class="text-2xl font-serif font-bold mb-2">Vampiren Veil</h3>
+                <p class="text-gray-400 mb-4 text-sm">Sweet yet refined with strawberry crème brûlée notes</p>
+                
+                <div class="space-y-4">
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Top Notes</h4>
+                        <p class="text-gray-300 text-sm">Sargol Saffron, Jasmine Flowers, Crimson Strawberry</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Heart Notes</h4>
+                        <p class="text-gray-300 text-sm">Burnt Sugar, Fir Tree Resin, Ambrox Crystals</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Base Notes</h4>
+                        <p class="text-gray-300 text-sm">Black Amber</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                        View Details
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Pretty as Poison -->
+            <div class="glass rounded-2xl p-6 h-full transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative">
+                <h3 class="text-2xl font-serif font-bold mb-2">Pretty as Poison</h3>
+                <p class="text-gray-400 mb-4 text-sm">Smoked autumn fruits with bitter almond complexity</p>
+                
+                <div class="space-y-4">
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Top Notes</h4>
+                        <p class="text-gray-300 text-sm">Tatarian Black Cherry, Black Amber Plum, Bitter Almond</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Heart Notes</h4>
+                        <p class="text-gray-300 text-sm">Aged Liqueur, Midnight Rose</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Base Notes</h4>
+                        <p class="text-gray-300 text-sm">Vanilla Absolute, Ceylon Cinnamon, Roasted Tonka Bean</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                        View Details
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Ritual Spirit -->
+            <div class="glass rounded-2xl p-6 h-full transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(93,92,222,0.3)] relative">
+                <h3 class="text-2xl font-serif font-bold mb-2">Ritual Spirit</h3>
+                <p class="text-gray-400 mb-4 text-sm">Warm, comforting tobacco and vanilla with spice undertones</p>
+                
+                <div class="space-y-4">
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Top Notes</h4>
+                        <p class="text-gray-300 text-sm">Tobacco Leaf, Ritual Spices</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Heart Notes</h4>
+                        <p class="text-gray-300 text-sm">Vanilla Absolute, Trinitario Cacao, Roasted Tonka Bean, Tobacco Blossom</p>
+                    </div>
+                    
+                    <div class="fragrance-note-group">
+                        <h4 class="text-primary font-medium mb-1">Base Notes</h4>
+                        <p class="text-gray-300 text-sm">Dried Fruits, Palo Santo Smoke, Precious Woods</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Experience -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 py-12 mb-16">
+        <div class="glass rounded-3xl p-6 md:p-10">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 text-center">Discover Your Signature Scent</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                <div class="glass p-6 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_15px_rgba(93,92,222,0.25)]">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-leaf text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Explore Notes</h3>
+                    <p class="text-gray-400 text-sm">Discover the individual notes that make up each unique fragrance</p>
+                </div>
+                
+                <div class="glass p-6 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_15px_rgba(93,92,222,0.25)]">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-clock text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Development Timeline</h3>
+                    <p class="text-gray-400 text-sm">Understand how each fragrance evolves from first application to dry down</p>
+                </div>
+                
+                <div class="glass p-6 rounded-2xl text-center transition-all duration-300 hover:shadow-[0_0_15px_rgba(93,92,222,0.25)]">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+                        <i class="fas fa-heart text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Personal Recommendations</h3>
+                    <p class="text-gray-400 text-sm">Find your perfect match based on your preferences and style</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="glow-border bg-gradient-to-r from-primary to-purple-600 text-white py-3 px-10 rounded-full font-medium transition-all duration-300 transform hover:scale-105 animate-glow">
+                    Start Your Journey
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="glass rounded-t-2xl p-6 md:p-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-2xl font-serif font-bold mb-4">Luxury Fragrance Collection</h2>
+            <p class="text-gray-400 mb-6">Exquisite scents for the discerning connoisseur</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                    <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                    <i class="fab fa-pinterest text-xl"></i>
+                </a>
+            </div>
+            <p class="text-sm text-gray-500">© 2023 Luxury Fragrance Collection. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        // Initialize interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to fragrance cards
+            const fragranceCards = document.querySelectorAll('.glass');
+            fragranceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add click effects to buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    this.appendChild(ripple);
+                    
+                    // Position the ripple
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+                    ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+                    
+                    // Remove the ripple after animation
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
